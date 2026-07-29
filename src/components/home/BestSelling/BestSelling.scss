@@ -1,0 +1,9 @@
+.best-selling {
+    margin: 80px auto;
+
+    &__grid{
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        gap:30px;
+    }
+}

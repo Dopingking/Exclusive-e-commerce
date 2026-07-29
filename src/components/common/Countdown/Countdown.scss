@@ -1,0 +1,29 @@
+@use "../../../styles/abstracts/variables" as *;
+
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  .time-box {
+    text-align: center;
+
+    small {
+      display: block;
+      font-size: 12px;
+      color: $gray;
+      margin-bottom: 4px;
+    }
+
+    h3 {
+      font-size: 32px;
+      font-weight: 700;
+    }
+  }
+
+  span {
+    color: $primary;
+    font-size: 28px;
+    font-weight: bold;
+  }
+}
