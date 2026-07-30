@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   updateProfile,
+  signOut,
 } from "firebase/auth";
 
 import { FcGoogle } from "react-icons/fc";
@@ -25,7 +26,7 @@ function Signup() {
   });
 
   const [loading, setLoading] = useState(false);
-const [error, setError] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -37,35 +38,37 @@ const [error, setError] = useState("");
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  setLoading(true);
-  setError("");
+    setLoading(true);
+    setError("");
 
-  try {
-    const userCredential =
-      await createUserWithEmailAndPassword(
-        auth,
-        formData.emailOrPhone,
-        formData.password
-      );
+    try {
+      const userCredential =
+        await createUserWithEmailAndPassword(
+          auth,
+          formData.emailOrPhone,
+          formData.password
+        );
 
-    await updateProfile(userCredential.user, {
-      displayName: formData.name,
-    });
+      await updateProfile(userCredential.user, {
+        displayName: formData.name,
+      });
 
-    navigate("/account");
-  } catch (err) {
-    setError(err.message);
-  } finally {
-    setLoading(false);
-  }
-};
+      await signOut(auth);
+
+      navigate("/login");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <div className="signup-page">
         <div className="signup-container">
-
           <div className="signup-image">
             <img
               src={signupImg}
@@ -74,7 +77,6 @@ const [error, setError] = useState("");
           </div>
 
           <div className="signup-form-wrapper">
-
             <div className="signup-header">
               <h2>Create an account</h2>
               <p>Enter your details below</p>
@@ -84,7 +86,6 @@ const [error, setError] = useState("");
               className="signup-form"
               onSubmit={handleSubmit}
             >
-
               <div className="form-group">
                 <input
                   type="text"
@@ -119,18 +120,18 @@ const [error, setError] = useState("");
               </div>
 
               {error && (
-              <p className="error-message">
-                {error}
-              </p>
-            )}
+                <p className="error-message">
+                  {error}
+                </p>
+              )}
 
-                          <Button
-              type="submit"
-              className="create-account-btn"
-              disabled={loading}
-            >
-              {loading ? "Creating Account..." : "Create Account"}
-            </Button>
+              <Button
+                type="submit"
+                className="create-account-btn"
+                disabled={loading}
+              >
+                {loading ? "Creating Account..." : "Create Account"}
+              </Button>
 
               <button
                 type="button"
@@ -147,11 +148,8 @@ const [error, setError] = useState("");
                   Log in
                 </Link>
               </div>
-
             </form>
-
           </div>
-
         </div>
       </div>
 

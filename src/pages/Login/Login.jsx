@@ -3,9 +3,10 @@ import "./Login.scss";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
 
 import { FcGoogle } from "react-icons/fc";
+
+import { auth } from "../../firebase/firebase";
 
 import Button from "../../components/ui/Button/Button";
 import Footer from "../../components/layout/Footer/Footer";
@@ -17,8 +18,9 @@ function Login() {
     email: "",
     password: "",
   });
+
   const [loading, setLoading] = useState(false);
-const [error, setError] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -30,31 +32,30 @@ const [error, setError] = useState("");
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  setLoading(true);
-  setError("");
+    setLoading(true);
+    setError("");
 
-  try {
-    await signInWithEmailAndPassword(
-      auth,
-      formData.email,
-      formData.password
-    );
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
 
-    navigate("/account");
-  } catch (err) {
-    setError(err.message);
-  } finally {
-    setLoading(false);
-  }
-};
+      navigate("/");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
       <div className="login-page">
         <div className="login-container">
-
           <div className="login-image">
             <img
               src={loginImg}
@@ -63,7 +64,6 @@ const [error, setError] = useState("");
           </div>
 
           <div className="login-form-wrapper">
-
             <div className="login-header">
               <h2>Log in to Exclusive</h2>
               <p>Enter your details below</p>
@@ -73,7 +73,6 @@ const [error, setError] = useState("");
               className="login-form"
               onSubmit={handleSubmit}
             >
-
               <div className="form-group">
                 <input
                   type="email"
@@ -96,20 +95,21 @@ const [error, setError] = useState("");
                 />
               </div>
 
-                        {error && (
-            <p className="error-message">
-              {error}
-            </p>
-)}
+              {error && (
+                <p className="error-message">
+                  {error}
+                </p>
+              )}
 
-             <Button
-              type="submit"
-              className="login-btn"
-              disabled={loading}
-            >
-              {loading ? "Logging In..." : "Log In"}
-            </Button>
-                          <button
+              <Button
+                type="submit"
+                className="login-btn"
+                disabled={loading}
+              >
+                {loading ? "Logging In..." : "Log In"}
+              </Button>
+
+              <button
                 type="button"
                 className="google-login-btn"
               >
@@ -124,11 +124,8 @@ const [error, setError] = useState("");
                   Sign Up
                 </Link>
               </div>
-
             </form>
-
           </div>
-
         </div>
       </div>
 

@@ -49,24 +49,28 @@ function AppRoutes() {
         />
 
         <Route
-          path="/wishlist"
-          element={
-            <Layout>
-              <Wishlist />
-            </Layout>
-          }
-        />
+  path="/wishlist"
+  element={
+    <ProtectedRoute>
+      <Layout>
+        <Wishlist />
+      </Layout>
+    </ProtectedRoute>
+  }
+/>
 
         <Route
-          path="/cart"
-          element={
-            <Layout>
-              <Cart />
-            </Layout>
-          }
-        />
+  path="/cart"
+  element={
+    <ProtectedRoute>
+      <Layout>
+        <Cart />
+      </Layout>
+    </ProtectedRoute>
+  }
+/>
 
-       <Route
+     <Route
   path="/checkout"
   element={
     <ProtectedRoute>
@@ -77,7 +81,7 @@ function AppRoutes() {
   }
 />
 
-      <Route
+     <Route
   path="/account"
   element={
     <ProtectedRoute>
