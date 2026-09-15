@@ -1,0 +1,13 @@
+.flash-sales {
+  margin: 80px auto;
+
+  .swiper {
+    padding-bottom: 20px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+}

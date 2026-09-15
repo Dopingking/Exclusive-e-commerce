@@ -1,0 +1,42 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.top-banner {
+    background: $dark;
+    color: $white;
+    padding: 12px 0;
+    font-size: 14px;
+
+    &__content {
+        @include flex-between;
+    }
+
+    span {
+        font-weight: 600;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    select {
+        background: transparent;
+        color: $white;
+        border: none;
+        outline: none;
+    }
+}
+/* Responsive additions */
+
+@media (max-width: 576px) {
+  .top-banner {
+    padding: 9px 0;
+    font-size: 11px;
+
+    &__content {
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    p { line-height: 1.4; }
+    select { font-size: 11px; flex-shrink: 0; }
+  }
+}

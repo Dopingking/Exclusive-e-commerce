@@ -1,0 +1,30 @@
+@use "../../../styles/abstracts/variables" as *;
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    input {
+        width: 100%;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: $radius-sm;
+        outline: none;
+        transition: $transition;
+        font-size: $fs-md;
+
+        &:focus {
+            border-color: $primary;
+        }
+
+        &.error {
+            border-color: red;
+        }
+    }
+
+    small {
+        color: red;
+        font-size: 13px;
+    }
+}

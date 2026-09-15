@@ -1,0 +1,18 @@
+@use "../abstracts/variables" as *;
+
+body{
+    font-family:$font-primary;
+    background:$white;
+    color:$dark;
+}
+
+.container{
+    width:min(1170px,90%);
+    margin-inline:auto;
+}
+
+html, body, #root { max-width: 100%; }
+
+.container { max-width: 1170px; }
+
+button, input, textarea, select { max-width: 100%; }

@@ -1,0 +1,51 @@
+@use "../../styles/abstracts/variables" as *;
+
+.product-details-page {
+  padding: 40px 0 80px;
+
+  &__breadcrumb {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 80px;
+
+    a {
+      color: rgba(0, 0, 0, 0.5);
+      text-decoration: none;
+
+      &:hover {
+        color: #000;
+      }
+    }
+
+    span {
+      color: #000;
+    }
+  }
+
+  /* Main 60 / 40 Split Layout matching Figma */
+  &__layout {
+    display: grid;
+    grid-template-columns: 58% 38%; // Approx 60/40 split with a balanced gap
+    gap: 4%;
+    align-items: start;
+    margin-bottom: 140px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+}
+/* Responsive additions */
+
+@media (max-width: 768px) {
+  .product-details-page { padding: 30px 0 55px; }
+  .product-details-page__breadcrumb { margin-bottom: 40px; }
+  .product-details-page__layout { gap: 40px; margin-bottom: 80px; }
+}

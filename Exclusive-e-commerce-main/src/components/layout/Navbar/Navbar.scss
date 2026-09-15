@@ -1,0 +1,266 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #e5e5e5;
+    background: $white;
+
+    &__container {
+        @include flex-between;
+        height: 80px;
+    }
+
+    &__logo a {
+        font-size: 24px;
+        font-weight: 700;
+        font-family: $font-secondary;
+        color: $dark;
+        text-decoration: none;
+    }
+
+    &__links {
+        display: flex;
+        gap: 40px;
+
+        a {
+            font-size: 16px;
+            color: $dark;
+            text-decoration: none;
+            transition: $transition;
+        }
+
+        a.active {
+            font-weight: 600;
+            border-bottom: 2px solid $dark;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        overflow: visible;
+
+        a {
+            color: $dark;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            padding: 4px;
+            overflow: visible;
+            transition: color 0.2s;
+
+            // Adjust overall icon size here if needed
+            svg {
+                font-size: 20px;
+            }
+
+            &:hover {
+                color: #db4444;
+            }
+        }
+    }
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    padding: 10px 14px;
+    border-radius: 6px;
+    gap: 10px;
+
+    input {
+        border: none;
+        outline: none;
+        background: transparent;
+        width: 220px;
+        font-size: 12px;
+    }
+
+    svg {
+        font-size: 16px;
+        color: $dark;
+        cursor: pointer;
+    }
+}
+
+.wishlist-icon-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+
+    .wishlist-badge {
+        position: absolute;
+        top: -6px;
+        right: -8px;
+        background-color: #db4444;
+        color: #ffffff;
+        font-size: 10px;
+        font-weight: 600;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ffffff;
+    }
+}
+
+.cart-icon-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+
+    .cart-badge {
+        position: absolute;
+        top: -6px;
+        right: -8px;
+        background-color: #db4444;
+        color: #ffffff;
+        font-size: 10px;
+        font-weight: 600;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ffffff;
+    }
+}
+
+.user-menu-container {
+    position: relative;
+
+    .user-icon-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: $dark;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px;
+        border-radius: 50%;
+        transition: all 0.2s;
+
+        // Changes background to red when dropdown is open or hovered
+        &.active, &:hover {
+            background-color: #db4444;
+            color: $white;
+        }
+    }
+
+    .user-dropdown {
+        position: absolute;
+        top: 45px;
+        right: 0;
+        width: 225px;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(15px);
+        border-radius: 4px;
+        padding: 15px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        z-index: 1001;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 20px;
+            color: $white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+
+            svg {
+                font-size: 16px;
+            }
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
+    }
+}
+/* Responsive additions */
+
+.navbar__mobile-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: $dark;
+  font-size: 22px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .navbar__container { position: relative; gap: 16px; }
+  .navbar__links { gap: 24px; }
+  .navbar__actions { gap: 14px; }
+  .search-box { padding: 8px 10px; }
+  .search-box input { width: clamp(130px, 18vw, 190px); }
+}
+
+@media (max-width: 768px) {
+  .navbar__container { height: 68px; }
+  .navbar__logo a { font-size: 21px; }
+  .navbar__mobile-toggle { display: inline-flex; order: 2; }
+
+  .navbar__links {
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding: 12px 5%;
+    background: $white;
+    border-bottom: 1px solid #e5e5e5;
+    box-shadow: 0 10px 20px rgba(0,0,0,.06);
+
+    &.is-open { display: flex; }
+
+    a {
+      padding: 13px 0;
+      font-size: 15px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    a:last-child { border-bottom: 0; }
+  }
+
+  .navbar__actions { margin-left: auto; gap: 10px; }
+  .search-box { order: 1; flex: 1; min-width: 0; max-width: 210px; }
+  .search-box input { width: 100%; min-width: 0; font-size: 11px; }
+  .wishlist-icon-link, .cart-icon-link, .user-menu-container { order: 3; }
+}
+
+@media (max-width: 480px) {
+  .navbar__container { width: 92%; }
+  .search-box { max-width: 145px; }
+  .search-box input { display: none; }
+  .search-box { width: 38px; justify-content: center; padding: 9px; }
+  .navbar__actions { gap: 6px; }
+  .navbar__actions a, .user-menu-container .user-icon-btn { font-size: 18px; }
+}

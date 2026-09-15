@@ -1,0 +1,36 @@
+@use "../../../styles/abstracts/variables" as *;
+
+.categories {
+  margin: 80px auto;
+
+  .category-card {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 30px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+      background: $primary;
+      color: $white;
+    }
+
+    .icon {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+}
+/* Responsive additions */
+
+@media (max-width: 576px) {
+  .categories { margin: 55px auto; }
+  .categories .category-card { padding: 22px 12px; }
+  .categories .category-card .icon { font-size: 32px; margin-bottom: 12px; }
+}

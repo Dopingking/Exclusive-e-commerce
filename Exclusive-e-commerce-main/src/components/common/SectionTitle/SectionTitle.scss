@@ -1,0 +1,36 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.section-title {
+  margin-bottom: 40px;
+
+  &__subtitle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+
+    .indicator {
+      width: 20px;
+      height: 40px;
+      background: $primary;
+      border-radius: 4px;
+    }
+
+    h4 {
+      color: $primary;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+
+  &__header {
+    @include flex-between;
+    align-items: flex-end;
+
+    h2 {
+      font-size: 36px;
+      font-weight: 600;
+    }
+  }
+}
