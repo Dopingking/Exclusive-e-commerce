@@ -1,0 +1,31 @@
+@use "../../../styles/abstracts/variables" as *;
+
+.btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: $transition;
+  border-radius: $radius-sm;
+  font-weight: 500;
+  padding: 16px 48px;
+
+  &--primary {
+    background: $primary;
+    color: $white;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &--secondary {
+    background: transparent;
+    border: 1px solid $dark;
+    color: $dark;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

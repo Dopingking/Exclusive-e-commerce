@@ -1,0 +1,185 @@
+@use "../../styles/abstracts/variables" as *;
+
+.account-page {
+  padding: 80px 0 140px;
+}
+
+.account-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 70px;
+
+  .breadcrumb {
+    font-size: 14px;
+    color: #777;
+
+    span {
+      margin: 0 10px;
+    }
+  }
+
+  .welcome {
+    font-size: 14px;
+
+    span {
+      color: $primary;
+      font-weight: 500;
+    }
+  }
+}
+
+.account-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 70px;
+}
+
+.account-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+
+  .menu-group {
+
+    h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 35px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      li {
+        color: #777;
+        cursor: pointer;
+        transition: .3s;
+
+        &:hover {
+          color: $primary;
+        }
+
+        &.active {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+
+.account-content {
+  background: white;
+  min-height: 650px;
+  border-radius: 4px;
+  box-shadow: 0 2px 20px rgba(0,0,0,.05);
+}
+
+.account-content {
+  background: #fff;
+  padding: 40px 80px;
+  border-radius: 4px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, .05);
+
+  h2 {
+    color: $primary;
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  label {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  input {
+    height: 50px;
+    border: none;
+    background: #f5f5f5;
+    padding: 0 18px;
+    border-radius: 4px;
+    outline: none;
+    font-size: 15px;
+
+    &:focus {
+      border: 1px solid $primary;
+    }
+  }
+}
+
+.password-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  h4 {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  input {
+    height: 50px;
+    border: none;
+    background: #f5f5f5;
+    border-radius: 4px;
+    padding: 0 18px;
+    outline: none;
+
+    &:focus {
+      border: 1px solid $primary;
+    }
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 30px;
+  margin-top: 10px;
+
+  .cancel-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .save-btn {
+    background: $primary;
+    color: white;
+    border: none;
+    padding: 16px 48px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+      opacity: .9;
+    }
+  }
+}

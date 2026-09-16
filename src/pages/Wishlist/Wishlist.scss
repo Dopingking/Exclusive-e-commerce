@@ -1,0 +1,143 @@
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins" as *;
+
+.wishlist-page {
+  padding: 80px 0 140px;
+
+  .wishlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+
+    h2 {
+      font-size: 24px;
+      font-weight: 400;
+    }
+  }
+
+  .wishlist-empty {
+    text-align: center;
+    padding: 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    p {
+      font-size: 18px;
+      color: #7d7d7d;
+    }
+  }
+
+  .wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__image-container {
+    position: relative;
+    background: #f5f5f5;
+    height: 250px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: $white;
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background 0.2s;
+
+      &:hover {
+        background: #f0f0f0;
+      }
+    }
+
+    .add-to-cart-btn {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: $dark;
+      color: $white;
+      border: none;
+      padding: 10px 0;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s;
+
+      &:hover {
+        background: #000;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    h3 {
+      font-size: 16px;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .product-card__price {
+      display: flex;
+      gap: 12px;
+
+      .current-price {
+        color: #db4444;
+        font-weight: 500;
+      }
+
+      .old-price {
+        color: rgba(0, 0, 0, 0.5);
+        text-decoration: line-through;
+      }
+    }
+  }
+}

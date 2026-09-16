@@ -1,0 +1,61 @@
+@use "../../../styles/abstracts/variables" as *;
+
+.product-gallery {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  width: 100%;
+
+  /* Left column: Always visible 4 thumbnails stack */
+  &__thumbnails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 170px;
+    height: 600px;
+    flex-shrink: 0;
+
+    .thumbnail-item {
+      width: 170px;
+      height: 132px;
+      background: #f5f5f5;
+      border-radius: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: border-color 0.2s ease;
+      overflow: hidden;
+
+      &.active {
+        border-color: #000;
+      }
+
+      img {
+        width: 80%;
+        height: 80%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  /* Right column: Main image display box */
+  &__main {
+    flex: 1;
+    height: 600px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    overflow: hidden;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+}
